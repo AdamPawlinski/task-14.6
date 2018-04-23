@@ -1,8 +1,8 @@
 var CounterDec = React.createClass({
   getInitialState: function() {
-    return (
+    return {
       counter: 0
-    )
+    }
   },
   decrementCount: function() {
     this.setState({
@@ -11,7 +11,8 @@ var CounterDec = React.createClass({
   },
 
   render: function() {
-      return React.createElement('div', {onCLick: this.decrementCount}),
-      React.createElement('span', {}, "Decrementation counter: " + this.state.counter)
+      return React.createElement('div', {onClick: this.decrementCount},
+        React.createElement('span', {}, "Decrementation counter: " + this.state.counter)
+      )
   }
 })

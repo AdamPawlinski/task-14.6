@@ -1,8 +1,8 @@
 var CounterInc = React.createClass({
   getInitialState: function() {
-    return (
+    return {
       counter: 0
-    )
+    }
   },
   incrementCount: function() {
     this.setState({
@@ -11,7 +11,8 @@ var CounterInc = React.createClass({
   },
 
   render: function() {
-      return React.createElement('div', {onCLick: this.incrementCount}),
+      return React.createElement('div', {onClick: this.incrementCount},
       React.createElement('span', {}, "Incrementation counter: " + this.state.counter)
+      )
   }
 })
