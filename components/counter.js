@@ -1,4 +1,4 @@
-var CounterDec = React.createClass({
+var Counter = React.createClass({
   getDefaultProps: function() {
     console.log('getDefaultProps - setting default props; for example it could get props responsible for changing the value of conuter depending on actual time');
   },
@@ -6,7 +6,8 @@ var CounterDec = React.createClass({
   getInitialState: function() {
     console.log('getInitialState - setting the state of counter');
     return {
-      counter: 0
+      counterInc: 0,
+      counterDec: 0
     }
   },
 
@@ -14,9 +15,15 @@ var CounterDec = React.createClass({
     console.log('componentWillReceiveProps - setting new state of counter depending on received props for example changing actual time');
   },
 
+  incrementCount: function() {
+    this.setState({
+      counterInc: this.state.counterInc + 1
+    })
+  },
+
   decrementCount: function() {
     this.setState({
-      counter: this.state.counter - 1
+      counterDec: this.state.counterDec - 1
     })
   },
 
@@ -34,8 +41,9 @@ var CounterDec = React.createClass({
   },
 
   render: function() {
-      return React.createElement('div', {onClick: this.decrementCount},
-        React.createElement('span', {}, "Decrementation counter: " + this.state.counter)
+      return React.createElement('div', {},
+        React.createElement('div', {onClick: this.decrementCount}, "Decrementation counter: " + this.state.counterDec),
+        React.createElement('div', {onClick: this.incrementCount}, "Incrementation counter: " + this.state.counterInc)
       )
   },
 
