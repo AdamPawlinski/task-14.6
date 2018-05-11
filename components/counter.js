@@ -40,13 +40,6 @@ var Counter = React.createClass({
     console.log('componentWillUpdate - is called following shouldComponentUpdate method, when it returns true; so when time is changed counter incements and it should be rendered');
   },
 
-  render: function() {
-      return React.createElement('div', {},
-        React.createElement('div', {onClick: this.decrementCount}, "Decrementation counter: " + this.state.counterDec),
-        React.createElement('div', {onClick: this.incrementCount}, "Incrementation counter: " + this.state.counterInc)
-      )
-  },
-
   componentDidUpdate: function() {
     console.log('componentDidUpdate - after rendering changed counter there could appear new actual time under the counter');
   },
@@ -57,8 +50,16 @@ var Counter = React.createClass({
 
   componentWillUnmount: function() {
     this.setState({
-      counter: this.state.counter = 0
+      counterInc: this.state.counterInc = 0,
+      counterDec: this.state.counterDec = 0      
     });
     console.log('componentWillUnmount - it can be used to reset the counter before liquidate the component');
+  },
+
+  render: function() {
+      return React.createElement('div', {},
+        React.createElement('div', {onClick: this.decrementCount}, "Decrementation counter: " + this.state.counterDec),
+        React.createElement('div', {onClick: this.incrementCount}, "Incrementation counter: " + this.state.counterInc)
+      )
   }
 })
